@@ -43,7 +43,7 @@ const sumNums = (arr)=>{
 
     for (let i = 0; i < arr.length; i++) {
         
-        if (!isNaN(arr[i]) && typeof arr[i] !== 'boolean' && arr[i] !== null&& typeof arr[i] !== 'string') {
+        if (typeof arr[i] == 'number' ) {
 
                 
                 sum += arr[i];
