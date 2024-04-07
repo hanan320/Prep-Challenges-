@@ -133,7 +133,36 @@ const cvFormatter = (arr) => {
 //  1- rejectedApplicants are applications that has both the names empty or null and whoever have one year or less of Experience
 
 const applicationsStatics = (arr) => {
-    // write your code here
+   
+    for (const i of arr) {
+        
+        result.totalApplicants++;
+
+        
+        if ((!i.firstName && !i.lastName) || i.yearsOfExperience <= 1) {
+            result.rejectedApplicants++;
+        } else {
+            
+            switch (i.tech.toLowerCase()) {
+                case 'python':
+                    result.python_devs++;
+                    break;
+                case 'javascript':
+                    result.javaScript_devs++;
+                    break;
+                case '.net':
+                    result.dotNet_devs++;
+                    break;
+                case 'java':
+                    result.java_devs++;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    return result;
 };
 // -------------------------------------------------------------------------------------------------------
 
