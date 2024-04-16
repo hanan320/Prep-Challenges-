@@ -19,14 +19,12 @@
 //  
 
 const arrInc = (arr) => {
-    let result = [];
-
-    for(let i=0;i<arr.length;i++) {
-      result.push(arr[i] + 10);
-    }
-  
-    return result;
-}
+  let result = [];
+  arr.forEach(num => {
+      result.push(num + 10);
+  });
+  return result;
+};
 // -------------------------------------------------------------------------------------------------------
 
 
