@@ -40,14 +40,12 @@ const arrInc = (arr) => {
 //  [5, 6, 7, 7]
 // 
 const roundDecimals = (arr) => {
-    let result = [];
-
-    for(let i=0;i<arr.length;i++) {
-      result.push(Math.round(arr[i]));
-    }
-  
-    return result;
-}
+  let result = [];
+  arr.forEach(num => {
+      result.push(Math.round(num));
+  });
+  return result;
+};
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
@@ -114,27 +112,43 @@ const roundDecimals = (arr) => {
 // ]
 //
 
-const employeesBonus = (arr) => {
-    const increaseSalary = (salary, bonus) => {
-        const numericSalary = parseInt(salary.replace(/\$/g, ""));
-        const bonusSalary = numericSalary + bonus;
-        return bonusSalary + "$";
-    };
+// const employeesBonus = (arr) => {
+//     const increaseSalary = (salary, bonus) => {
+//         const numericSalary = parseInt(salary.replace(/\$/g, ""));
+//         const bonusSalary = numericSalary + bonus;
+//         return bonusSalary + "$";
+//     };
 
-    for (let employee of arr) {
+//     for (let employee of arr) {
        
-            if (employee.workHours > 8) {
-                employee.salary = increaseSalary(employee.salary, 100);
-            } else {
-                employee.salary = increaseSalary(employee.salary, 50);
-            }
+//             if (employee.workHours > 8) {
+//                 employee.salary = increaseSalary(employee.salary, 100);
+//             } else {
+//                 employee.salary = increaseSalary(employee.salary, 50);
+//             }
       
-    }
+//     }
 
-    return arr;
-};
+//     return arr;
+// };
 
-  
+const employeesBonus = (arr) => {
+  const increaseSalary = (salary, bonus) => {
+      const numericSalary = parseInt(salary.replace(/\$/g, ""));
+      const bonusSalary = numericSalary + bonus;
+      return bonusSalary + "$";
+  };
+
+  arr.forEach(employee => {
+      if (employee.workHours > 8) {
+          employee.salary = increaseSalary(employee.salary, 100);
+      } else {
+          employee.salary = increaseSalary(employee.salary, 50);
+      }
+  });
+
+  return arr;
+};  
   
   
   
@@ -157,19 +171,19 @@ const employeesBonus = (arr) => {
 // Output: 200
 
 const mostExpensive = (budget, mouseArray, keyBoardArray) => {
-    let maxPrice = 0;
+  let maxPrice = 0;
 
-  for (let mousePrice of mouseArray) {
-    for (let keyBoardPrice of keyBoardArray) {
-      const totalPrice = mousePrice + keyBoardPrice;
-      if (totalPrice <= budget && totalPrice > maxPrice) {
-        maxPrice = totalPrice;
-      }
-    }
-  }
+  mouseArray.forEach(mousePrice => {
+      keyBoardArray.forEach(keyBoardPrice => {
+          const totalPrice = mousePrice + keyBoardPrice;
+          if (totalPrice <= budget && totalPrice > maxPrice) {
+              maxPrice = totalPrice;
+          }
+      });
+  });
 
   return maxPrice;
-}
+};
 // -------------------------------------------------------------------------------------------------------
 
 module.exports = { arrInc, roundDecimals, employeesBonus, mostExpensive };
